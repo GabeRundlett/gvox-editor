@@ -1,0 +1,27 @@
+{
+  "name": "gvox-editor",
+  "version-semver": "0.1.0",
+  "description": "GVOX Voxel Model Editor",
+  "homepage": "https://github.com/GabeRundlett/gvox-editor",
+  "dependencies": [
+    "stb",
+    "gvox",
+    {
+      "name": "daxa",
+      "features": [
+        "utils-mem",
+        "utils-pipeline-manager-glslang",
+        "utils-task-graph"
+      ]
+    },
+    "glfw3",
+    "rmlui"
+  ],
+  "builtin-baseline": "78ba9711d30c64a6b40462c72f356c681e2255f3",
+  "vcpkg-configuration": {
+    "overlay-ports": [
+      "deps/gvox",
+      "deps/Daxa"
+    ]
+  }
+}
