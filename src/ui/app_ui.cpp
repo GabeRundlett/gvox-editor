@@ -36,7 +36,7 @@ void LoadFonts() {
 AppUi::AppUi(daxa::Device device)
     : app_windows([&]() {
         auto result = std::vector<AppWindow>{};
-        result.emplace_back(device, daxa_i32vec2{1680, 1024});
+        result.emplace_back(device, daxa_i32vec2{800, 600});
         return result; }()),
       render_interface(device, app_windows[0].swapchain.get_format()) {
 

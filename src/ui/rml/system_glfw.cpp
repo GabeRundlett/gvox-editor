@@ -34,6 +34,7 @@
 #include <RmlUi/Core/StringUtilities.h>
 #include <RmlUi/Core/SystemInterface.h>
 #include <GLFW/glfw3.h>
+#include <cmath>
 
 SystemInterface_GLFW::SystemInterface_GLFW() {
     cursor_pointer = glfwCreateStandardCursor(GLFW_HAND_CURSOR);
