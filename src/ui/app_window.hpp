@@ -10,7 +10,6 @@
 
 struct AppWindow {
     std::unique_ptr<GLFWwindow, decltype(&glfwDestroyWindow)> glfw_window{nullptr, &glfwDestroyWindow};
-    std::unique_ptr<std::mutex> swapchain_mtx{std::make_unique<std::mutex>()};
     daxa::Swapchain swapchain{};
     daxa_i32vec2 size{};
 

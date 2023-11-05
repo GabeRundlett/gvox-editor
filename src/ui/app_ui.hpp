@@ -11,6 +11,11 @@ struct AppUi {
 
     SystemInterface_GLFW system_interface{};
     RenderInterface_Daxa render_interface;
+    Rml::Context *rml_context{};
+
+    // App state
+    bool show_text = true;
+    Rml::String animal = "dog";
 
     explicit AppUi(daxa::Device device);
     ~AppUi();

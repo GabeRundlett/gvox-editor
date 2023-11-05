@@ -17,7 +17,7 @@ class RenderInterface_Daxa : public Rml::RenderInterface {
 
     // Sets up OpenGL states for taking rendering commands from RmlUi.
     void begin_frame(daxa::ImageId target_image, daxa::CommandRecorder &recorder);
-    void end_frame(daxa::ImageId target_image);
+    void end_frame(daxa::ImageId target_image, daxa::CommandRecorder &recorder);
 
     // -- Inherited from Rml::RenderInterface --
     void RenderGeometry(Rml::Vertex *vertices, int num_vertices, int *indices, int num_indices, Rml::TextureHandle texture, const Rml::Vector2f &translation) override;
@@ -72,7 +72,6 @@ class RenderInterface_Daxa : public Rml::RenderInterface {
     daxa::Rect2D current_scissor{};
     bool scissor_enabled{};
 
-    daxa::CommandRecorder *recorder_ptr{};
     Rml::Matrix4f projection{};
     Rml::Matrix4f transform{};
     bool transform_enabled = false;

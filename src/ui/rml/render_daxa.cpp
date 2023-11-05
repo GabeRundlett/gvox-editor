@@ -12,6 +12,8 @@
 #include <utility>
 #include <iostream>
 #include <cassert>
+
+#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
 struct Vertex {
@@ -169,7 +171,6 @@ void RenderInterface_Daxa::recreate_ibuffer(size_t ibuffer_new_size) {
 
 void RenderInterface_Daxa::begin_frame(daxa::ImageId target_image, daxa::CommandRecorder &recorder) {
     using namespace std::literals;
-    recorder_ptr = &recorder;
 
     auto target_image_extent = device.info_image(target_image).value().size;
 
@@ -178,8 +179,7 @@ void RenderInterface_Daxa::begin_frame(daxa::ImageId target_image, daxa::Command
     bound_texture = std::bit_cast<Rml::TextureHandle>(default_texture);
 }
 
-void RenderInterface_Daxa::end_frame(daxa::ImageId target_image) {
-    auto &recorder = *recorder_ptr;
+void RenderInterface_Daxa::end_frame(daxa::ImageId target_image, daxa::CommandRecorder &recorder) {
     auto vbuffer_current_size = device.info_buffer(vbuffer).value().size;
     auto vbuffer_needed_size = vertex_cache.size() * sizeof(Vertex);
     auto ibuffer_current_size = device.info_buffer(ibuffer).value().size;

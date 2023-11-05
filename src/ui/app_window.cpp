@@ -33,7 +33,7 @@ namespace {
         return glfwCreateWindow(
             static_cast<int32_t>(size.x),
             static_cast<int32_t>(size.y),
-            "Daxa sample window name", nullptr, nullptr);
+            "Gvox Editor", nullptr, nullptr);
     }
 } // namespace
 
@@ -45,10 +45,7 @@ AppWindow::AppWindow(daxa::Device device, daxa_i32vec2 size)
         [](GLFWwindow *glfw_window, int width, int height) {
             auto &self = *reinterpret_cast<AppWindow *>(glfwGetWindowUserPointer(glfw_window));
             self.size = {width, height};
-            {
-                auto swapchain_lock = std::lock_guard{*self.swapchain_mtx};
-                self.swapchain.resize();
-            }
+            self.swapchain.resize();
             if (self.on_resize) {
                 self.on_resize();
             }
@@ -58,7 +55,6 @@ AppWindow::AppWindow(daxa::Device device, daxa_i32vec2 size)
         this->glfw_window.get(),
         [](GLFWwindow *glfw_window) {
             auto &self = *reinterpret_cast<AppWindow *>(glfwGetWindowUserPointer(glfw_window));
-            auto swapchain_lock = std::lock_guard{*self.swapchain_mtx};
             if (self.on_close) {
                 self.on_close();
             }

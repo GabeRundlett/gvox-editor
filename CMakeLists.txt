@@ -6,6 +6,8 @@ project(gvox-editor VERSION 0.1.0)
 
 add_executable(${PROJECT_NAME}
     "src/main.cpp"
+    "src/core/scene.cpp"
+    "src/renderer/viewport.cpp"
     "src/ui/app_window.cpp"
     "src/ui/app_ui.cpp"
     "src/ui/rml/render_daxa.cpp"
@@ -27,4 +29,5 @@ PRIVATE
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${Stb_INCLUDE_DIR}
+    "${CMAKE_CURRENT_LIST_DIR}/src"
 )
